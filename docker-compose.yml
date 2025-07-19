@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  api-gateway:
+    build: .
+    container_name: api-gateway
+    restart: on-failure
+    ports:
+      - "8083:8083"
+    environment:
+      - AUTH_SERVICE_URL=http://auth-service:8080
+      - SKILL_SERVICE_URL=http://skill-service:8081
+      - REMINDER_SERVICE_URL=http://reminder-service:8082
+      - JWT_SECRET=${JWT_SECRET}
+    networks:
+      - skillsphere-net
+
+networks:
+  skillsphere-net:
+    external: true
