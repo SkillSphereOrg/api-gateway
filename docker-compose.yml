@@ -8,9 +8,7 @@ services:
     ports:
       - "8083:8083"
     environment:
-      - AUTH_SERVICE_URL=http://auth-service:8080
-      - SKILL_SERVICE_URL=http://skill-service:8081
-      - REMINDER_SERVICE_URL=http://reminder-service:8082
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka/
       - JWT_SECRET=${JWT_SECRET}
     networks:
       - skillsphere-net
